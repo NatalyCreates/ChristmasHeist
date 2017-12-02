@@ -48,6 +48,7 @@ public class Player : MonoBehaviour {
             // activate noise radius only when the player is moving
             if (direction == Vector3.zero)
             {
+                SoundManager.Instance.SetIsWalking(false);
                 noise.GetComponent<Renderer>().enabled = false;
                 noise.GetComponent<Collider>().enabled = false;
                 //Debug.Log("Radius hidden");
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour {
             }
             else
             {
+                SoundManager.Instance.SetIsWalking(true);
                 noise.GetComponent<Renderer>().enabled = true;
                 noise.GetComponent<Collider>().enabled = true;
                 //Debug.Log("Radius shown");

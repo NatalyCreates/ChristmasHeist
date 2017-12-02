@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     public Text gameOverText;
     public GameObject gameOverBanner;
 
-    float secondsLeft = 30;
+    float secondsLeft;
 
     internal bool isGameRunning = false;
     bool isGameOver = false;
@@ -33,8 +33,7 @@ public class GameManager : MonoBehaviour {
     }
 
 	void Start() {
-        score.text = "0";
-        timer.text = "00:00";
+        secondsLeft = GameDesign.Instance.totalTime;
         StartCoroutine(StartGameDelayed(2f));
 	}
     IEnumerator StartGameDelayed(float time)
@@ -44,13 +43,17 @@ public class GameManager : MonoBehaviour {
     }
 	
 	void Update() {
-        timer.text = (Mathf.RoundToInt(secondsLeft) / 60).ToString("N0") + ":" + (Mathf.RoundToInt(secondsLeft) % 60).ToString("N0");
+        timer.text = (Mathf.RoundToInt(secondsLeft) / 60).ToString("00") + ":" + (Mathf.RoundToInt(secondsLeft) % 60).ToString("00");
         if (isGameRunning)
         {
             secondsLeft -= Time.deltaTime;
         }
         if (secondsLeft <= 0)
         {
+            if (Player.Instance.transform.position.z >= 40)
+            {
+                OnExitMall();
+            }
             isGameRunning = false;
             gameOverText.text = "Out of Time!";
             gameOverBanner.SetActive(true);
@@ -68,6 +71,7 @@ public class GameManager : MonoBehaviour {
 
     public void OnExitMall()
     {
+        SoundManager.Instance.OnWin();
         isGameRunning = false;
         gameOverText.text = "Merry Christmas!";
         gameOverBanner.SetActive(true);
@@ -76,6 +80,7 @@ public class GameManager : MonoBehaviour {
 
     public void OnGuardCaught()
     {
+        SoundManager.Instance.OnDeath();
         isGameRunning = false;
         gameOverText.text = "Busted!";
         gameOverBanner.SetActive(true);

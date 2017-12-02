@@ -39,6 +39,7 @@ public class Collectible : MonoBehaviour {
             //NoiseRadius.Instance.noiseCollider.radius = ;
             NoiseRadius.Instance.transform.localScale = new Vector3(0.5f, noiseRadScale, noiseRadScale);
 
+            SoundManager.Instance.OnPickup();
             Destroy(gameObject);
         }
         else
