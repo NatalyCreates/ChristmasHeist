@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 297636917}
   - component: {fileID: 297636916}
   - component: {fileID: 297636915}
-  - component: {fileID: 297636914}
   m_Layer: 0
   m_Name: RadiusCamera
   m_TagString: Untagged
@@ -144,13 +143,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &297636914
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 297636913}
-  m_Enabled: 1
 --- !u!124 &297636915
 Behaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +300,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
+--- !u!1001 &850667550
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4812748507639216, guid: 3e3460716dc85d849947faafcc1ea33e, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883006482989838, guid: 3e3460716dc85d849947faafcc1ea33e, type: 2}
+      propertyPath: m_Name
+      value: LongWall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3e3460716dc85d849947faafcc1ea33e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1584046455
 Prefab:
   m_ObjectHideFlags: 0
