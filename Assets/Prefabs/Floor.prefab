@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1326273255637252}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 1}
+  m_LocalScale: {x: 200, y: 200, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -109,4 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a600fc5010c98c4fa003c0d72c66553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 8
+  playerSpeed: 10
+  jingToRad: 0.45
+  startingNoiseSize: {x: 0, y: 0, z: 0}
