@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    NoiseRadius noise;
+    public NoiseRadius noise;
+    public static Player Instance;
 
     internal Vector3 direction = Vector3.zero;
     internal Vector3 direction_normalized;
 
     internal float movementSpeed;
-    int numCollectibles = 0;
+    public int numCollectibles = 0;
 
-	void Start() {
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    void Start() {
         // position player in entrance
         // init other stuff
-        noise = GetComponentInChildren<NoiseRadius>();
 
+        noise = GetComponentInChildren<NoiseRadius>();
+     
+        //Physics.IgnoreCollision(noise.GetComponent<Collider>(), GetComponent<Collider>());
+       
     }
 	
 	void Update() {
@@ -26,7 +35,7 @@ public class Player : MonoBehaviour {
         direction.y = 0;
         direction.z = Input.GetAxis("Vertical");
         direction_normalized = direction.normalized;
-        Debug.Log("CH direction vector " + direction.ToString());
+        //Debug.Log("CH direction vector " + direction.ToString());
 
         transform.Translate(direction_normalized.x * GameDesign.Instance.playerSpeed * Time.deltaTime, direction.y, direction_normalized.z * GameDesign.Instance.playerSpeed * Time.deltaTime);
 
@@ -39,14 +48,14 @@ public class Player : MonoBehaviour {
         {
             noise.GetComponent<Renderer>().enabled = false;
             noise.GetComponent<Collider>().enabled = false;
-            Debug.Log("Radius hidden");
+            //Debug.Log("Radius hidden");
             //NoiseRadius.Instance.HideNoiseRadius();
         }
         else
         {
             noise.GetComponent<Renderer>().enabled = true;
             noise.GetComponent<Collider>().enabled = true;
-            Debug.Log("Radius shown");
+            //Debug.Log("Radius shown");
             //NoiseRadius.Instance.ShowNoiseRadius();
         }
 
