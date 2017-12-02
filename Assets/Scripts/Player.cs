@@ -23,9 +23,9 @@ public class Player : MonoBehaviour {
         // init other stuff
 
         noise = GetComponentInChildren<NoiseRadius>();
-     
-        //Physics.IgnoreCollision(noise.GetComponent<Collider>(), GetComponent<Collider>());
-       
+
+        NoiseRadius.Instance.transform.localScale = GameDesign.Instance.startingNoiseSize;
+        
     }
 	
 	void Update() {

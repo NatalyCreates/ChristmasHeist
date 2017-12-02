@@ -11,6 +11,8 @@ public class Collectible : MonoBehaviour {
     Collider noiseCollider;
     NoiseRadius noise;
 
+    internal float noiseRadScale;
+
     void Start()
     {
         // position player in entrance
@@ -26,14 +28,21 @@ public class Collectible : MonoBehaviour {
 
         if (other.gameObject.name == "Tree")
         {
-            Debug.Log("Trigger Enter Collectible - was noise");
+            //Debug.Log("Trigger Enter Collectible - was Tree");
+            Player.Instance.numCollectibles++;
+            Debug.Log(Player.Instance.numCollectibles.ToString());
+            //noiseRadScale = Mathf.Sqrt(Player.Instance.numCollectibles * GameDesign.Instance.jingToRad);
+            noiseRadScale = Player.Instance.numCollectibles * GameDesign.Instance.jingToRad;
+            //NoiseRadius.Instance.noiseCollider.radius = ;
+            NoiseRadius.Instance.transform.localScale = new Vector3(0.5f, noiseRadScale, noiseRadScale);
+
+            Destroy(gameObject);
         }
         else
         {
-            Debug.Log("Trigger Enter Collectible");
+            //Debug.Log("Trigger Enter Collectible - wasn't Tree");
             //Collectible dissapears
             //Add 1 to number of coll
-            Player.Instance.numCollectibles++;
         }
 
     }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class NoiseRadius : MonoBehaviour
 {
+    public static NoiseRadius Instance;
+    public SphereCollider noiseCollider;
 
-    //public static NoiseRadius Instance;
     /*
     public void ShowNoiseRadius()
     {
@@ -28,9 +29,9 @@ public class NoiseRadius : MonoBehaviour
         // GameManager.GameOver() if we did
     }
 
-
     void Awake()
     {
- //       Instance = this;
+        Instance = this;
+        noiseCollider = Instance.GetComponent<SphereCollider>();
     }
 }
