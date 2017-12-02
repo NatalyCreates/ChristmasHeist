@@ -13,10 +13,14 @@ public class GameDesign : MonoBehaviour {
     public static GameDesign Instance;
 
     public float playerSpeed = 8;
+    public float jingToRad = 0.45f;
+    public Vector3 startingNoiseSize;
 
     void Awake()
     {
         Instance = this;
+
+        startingNoiseSize = new Vector3(0.5f, 0.2f, 0.2f);
     }
 
     }
