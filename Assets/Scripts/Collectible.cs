@@ -30,6 +30,7 @@ public class Collectible : MonoBehaviour {
         {
             //Debug.Log("Trigger Enter Collectible - was Tree");
             Player.Instance.numCollectibles++;
+            GameManager.Instance.UpdateScore(Player.Instance.numCollectibles);
             Debug.Log(Player.Instance.numCollectibles.ToString());
             //noiseRadScale = Mathf.Sqrt(Player.Instance.numCollectibles * GameDesign.Instance.jingToRad);
             noiseRadScale = Player.Instance.numCollectibles * GameDesign.Instance.jingToRad;

@@ -24,10 +24,16 @@ public class GameManager : MonoBehaviour {
     }
 
 	void Start() {
-		
+        score.text = "0";
+        timer.text = "00:00";
 	}
 	
 	void Update() {
 		
 	}
+
+    public void UpdateScore(int newScore)
+    {
+        score.text = newScore.ToString();
+    }
 }
