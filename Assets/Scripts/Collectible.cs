@@ -33,6 +33,8 @@ public class Collectible : MonoBehaviour {
             Debug.Log(Player.Instance.numCollectibles.ToString());
             //noiseRadScale = Mathf.Sqrt(Player.Instance.numCollectibles * GameDesign.Instance.jingToRad);
             noiseRadScale = Player.Instance.numCollectibles * GameDesign.Instance.jingToRad;
+            //noiseRadScale = Player.Instance.numCollectibles * 0.8f;
+            Debug.Log(noiseRadScale.ToString());
             //NoiseRadius.Instance.noiseCollider.radius = ;
             NoiseRadius.Instance.transform.localScale = new Vector3(0.5f, noiseRadScale, noiseRadScale);
 
