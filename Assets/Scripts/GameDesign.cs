@@ -12,16 +12,18 @@ public class GameDesign : MonoBehaviour {
 
     public static GameDesign Instance;
 
-    public float playerSpeed = 8;
-    public float jingToRad;
-    public Vector3 startingNoiseSize;
+    internal float playerSpeed = 20;
+    internal float guardSpeed = 10;
+    internal float jingToRad = 0.5f;
+    internal float initialTreeSize = 0.55f;
+    internal Vector3 startingNoiseSize;
 
     void Awake()
     {
         Instance = this;
 
-        jingToRad = 0.95f;
-        startingNoiseSize = new Vector3(0.5f, 0.2f, 0.2f);
+        //jingToRad ;
+        startingNoiseSize = new Vector3(0.5f, initialTreeSize, initialTreeSize);
     }
 
     }
