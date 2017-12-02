@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 64321999570678586}
   - component: {fileID: 23392442773929436}
   - component: {fileID: 114725180110995154}
+  - component: {fileID: 114975617664382380}
   m_Layer: 9
   m_Name: Floor
   m_TagString: Untagged
@@ -112,3 +113,16 @@ MonoBehaviour:
   playerSpeed: 10
   jingToRad: 0.45
   startingNoiseSize: {x: 0, y: 0, z: 0}
+--- !u!114 &114975617664382380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1326273255637252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 735ce970fa6dc4642b1b351769881966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 0}
+  score: {fileID: 0}
