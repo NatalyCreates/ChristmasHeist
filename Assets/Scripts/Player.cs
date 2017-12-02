@@ -24,12 +24,21 @@ public class Player : MonoBehaviour {
         direction.y = 0;
         direction.z = Input.GetAxis("Vertical");
         direction_normalized = direction.normalized;
-        Debug.Log("IHAMAIMC direction vector " + direction.ToString());
+        Debug.Log("CH direction vector " + direction.ToString());
 
         transform.Translate(direction_normalized.x * GameDesign.Instance.playerSpeed * Time.deltaTime, direction.y, direction_normalized.z * GameDesign.Instance.playerSpeed * Time.deltaTime);
 
         // animate
 
         // activate noise radius only when the player is moving
+        if (direction == Vector3.zero)
+        {
+            NoiseRadius.Instance.HideNoiseRadius();
+        }
+        else
+        {
+            NoiseRadius.Instance.ShowNoiseRadius();
+        }
+
     }
 }
