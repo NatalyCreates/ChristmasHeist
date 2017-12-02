@@ -43,6 +43,12 @@ public class GameManager : MonoBehaviour {
     }
 	
 	void Update() {
+
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         timer.text = (Mathf.RoundToInt(secondsLeft) / 60).ToString("00") + ":" + (Mathf.RoundToInt(secondsLeft) % 60).ToString("00");
         if (isGameRunning)
         {
