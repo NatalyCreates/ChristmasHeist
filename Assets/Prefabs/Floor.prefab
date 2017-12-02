@@ -126,3 +126,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 0}
   score: {fileID: 0}
+  gameOverText: {fileID: 0}
+  gameOverBanner: {fileID: 0}
