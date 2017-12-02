@@ -14,7 +14,7 @@ public class GameDesign : MonoBehaviour {
 
     internal float playerSpeed = 20;
     internal float guardSpeed = 10;
-    internal float jingToRad = 0.5f;
+    internal float jingToRad = 0.4f;
     internal float initialTreeSize = 0.55f;
     internal Vector3 startingNoiseSize;
     internal float totalTime = 60f;

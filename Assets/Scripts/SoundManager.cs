@@ -24,12 +24,17 @@ public class SoundManager : MonoBehaviour {
         // play music in sequence
     }
 
-    public void OnDeath()
+    public void OnBusted()
     {
 
     }
 
     public void OnWin()
+    {
+
+    }
+
+    public void OnTimesUp()
     {
 
     }

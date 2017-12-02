@@ -151,7 +151,7 @@ public class Guard : MonoBehaviour {
             //Lose game
 
             Debug.Log("Noise hit guard");
-            GameManager.Instance.OnGuardCaught();
+            GameManager.Instance.Busted();
             StopAllCoroutines();
 
             //Destroy(gameObject);

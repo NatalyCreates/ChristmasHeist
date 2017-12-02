@@ -52,12 +52,14 @@ public class GameManager : MonoBehaviour {
         {
             if (Player.Instance.transform.position.z >= 40)
             {
-                OnExitMall();
+                SoundManager.Instance.OnWin();
+                StopGame("You did it!");
             }
-            isGameRunning = false;
-            gameOverText.text = "Out of Time!";
-            gameOverBanner.SetActive(true);
-            isGameOver = true;
+            else
+            {
+                SoundManager.Instance.OnTimesUp();
+                StopGame("Out of Time!");
+            }
         }
 
         if (isGameOver)
@@ -69,21 +71,17 @@ public class GameManager : MonoBehaviour {
         }
 	}
 
-    public void OnExitMall()
+    public void Busted()
     {
-        SoundManager.Instance.OnWin();
-        isGameRunning = false;
-        gameOverText.text = "Merry Christmas!";
-        gameOverBanner.SetActive(true);
-        isGameOver = true;
+        SoundManager.Instance.OnBusted();
+        StopGame("Busted!");
     }
 
-    public void OnGuardCaught()
+    void StopGame(string textToShow)
     {
-        SoundManager.Instance.OnDeath();
-        isGameRunning = false;
-        gameOverText.text = "Busted!";
+        gameOverText.text = textToShow;
         gameOverBanner.SetActive(true);
+        isGameRunning = false;
         isGameOver = true;
     }
 
