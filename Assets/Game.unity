@@ -2350,7 +2350,12 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 23850343118822088, guid: afff17220871ade43afa49b95265f8db,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3845257805725d74d90c03cb47f502ed, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afff17220871ade43afa49b95265f8db, type: 2}
   m_IsPrefabParent: 0
