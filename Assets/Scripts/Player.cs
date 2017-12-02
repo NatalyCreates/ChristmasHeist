@@ -13,9 +13,11 @@ public class Player : MonoBehaviour {
     int numCollectibles = 0;
 
 	void Start() {
-		// position player in entrance
+        // position player in entrance
         // init other stuff
-	}
+        noise = GetComponentInChildren<NoiseRadius>();
+
+    }
 	
 	void Update() {
         // player input (4 dir movement)
@@ -30,14 +32,22 @@ public class Player : MonoBehaviour {
 
         // animate
 
+
+
         // activate noise radius only when the player is moving
         if (direction == Vector3.zero)
         {
-            NoiseRadius.Instance.HideNoiseRadius();
+            noise.GetComponent<Renderer>().enabled = false;
+            noise.GetComponent<Collider>().enabled = false;
+            Debug.Log("Radius hidden");
+            //NoiseRadius.Instance.HideNoiseRadius();
         }
         else
         {
-            NoiseRadius.Instance.ShowNoiseRadius();
+            noise.GetComponent<Renderer>().enabled = true;
+            noise.GetComponent<Collider>().enabled = true;
+            Debug.Log("Radius shown");
+            //NoiseRadius.Instance.ShowNoiseRadius();
         }
 
     }
