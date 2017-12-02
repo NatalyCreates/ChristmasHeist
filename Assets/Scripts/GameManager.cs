@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
     static public GameManager Instance;
+
+    public Text timer;
+    public Text score;
 
     void Awake()
     {
