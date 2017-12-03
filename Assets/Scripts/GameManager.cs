@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour {
 
     void StopGame(string textToShow)
     {
+        SoundManager.Instance.SetIsWalking(false);
         gameOverText.text = textToShow;
         gameOverBanner.SetActive(true);
         isGameRunning = false;

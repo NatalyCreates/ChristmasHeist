@@ -8,6 +8,9 @@ public class SoundManager : MonoBehaviour {
 
     public AudioSource music;
     public AudioSource walkingSfx;
+    public AudioSource otherSfx;
+
+    public AudioClip lose, win, pickup;
 
     bool isWalkingSoundPlaying = false;
 
@@ -31,22 +34,22 @@ public class SoundManager : MonoBehaviour {
 
     public void OnBusted()
     {
-
+        otherSfx.PlayOneShot(lose);
     }
 
     public void OnWin()
     {
-
+        otherSfx.PlayOneShot(win);
     }
 
     public void OnTimesUp()
     {
-
+        otherSfx.PlayOneShot(lose);
     }
 
     public void OnPickup()
     {
-
+        otherSfx.PlayOneShot(pickup);
     }
 
     public void SetIsWalking(bool isWalking)
