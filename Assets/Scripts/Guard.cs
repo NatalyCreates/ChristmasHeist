@@ -15,7 +15,7 @@ public class Guard : MonoBehaviour {
     Vector3[] guardPath3;
 
 
-    void Start() {
+    private void Awake() {
         // init pos
 
         //movDirection1 = new Vector3(0, 0, -1);
@@ -39,8 +39,15 @@ public class Guard : MonoBehaviour {
         guardPath3[4] = new Vector3(35f, 2f, 35f);
         guardPath3[5] = new Vector3(35f, 2f, 5f);
 
-        StartCoroutine(GuardMovement(guardID));
+        GameManager.OnGameStarted += OnGameStart;
+    }
 
+    void OnDestroy() {
+        GameManager.OnGameStarted -= OnGameStart;
+    }
+
+    void OnGameStart() {
+        StartCoroutine(GuardMovement(guardID));
     }
 	
 	void Update() {

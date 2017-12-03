@@ -69,6 +69,11 @@ public class SoundManager : MonoBehaviour {
     {
         if (isWalking && !isWalkingSoundPlaying)
         {
+            float maxVolume = 1f;
+            float minVolume = 0.3f;
+            float percent = Player.Instance.numCollectibles * 1.0f / (GameManager.Instance.maxCollectibles / 2);
+            float volume = Mathf.Clamp(minVolume + 0.7f * percent, minVolume, maxVolume);
+            walkingSfx.volume = volume;
             isWalkingSoundPlaying = true;
             walkingSfx.Play();
         }

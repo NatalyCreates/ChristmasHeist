@@ -56,7 +56,7 @@ public class Player : MonoBehaviour {
             }
             else
             {
-                SoundManager.Instance.SetIsWalking(true);
+                if (numCollectibles > 0) SoundManager.Instance.SetIsWalking(true);
                 noise.GetComponent<Renderer>().enabled = true;
                 noise.GetComponent<Collider>().enabled = true;
                 //Debug.Log("Radius shown");

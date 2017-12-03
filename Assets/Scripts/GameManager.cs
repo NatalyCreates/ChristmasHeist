@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+    public static event System.Action OnGameStarted;
 
     static public GameManager Instance;
 
@@ -22,7 +23,7 @@ public class GameManager : MonoBehaviour {
     internal bool isGameRunning = false;
     bool isGameOver = false;
 
-    int maxCollectibles;
+    public int maxCollectibles;
 
     public Color timerNormalColor, timerEndColor;
 
@@ -59,6 +60,9 @@ public class GameManager : MonoBehaviour {
         SoundManager.Instance.StartMusic();
         gameIntroBanner.SetActive(false);
         isGameRunning = true;
+        if (OnGameStarted != null) {
+            OnGameStarted();
+        }
     }
 
     bool timerFlashing = false;
