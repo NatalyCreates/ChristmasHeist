@@ -6,6 +6,11 @@ public class SoundManager : MonoBehaviour {
 
     static public SoundManager Instance;
 
+    public AudioSource music;
+    public AudioSource walkingSfx;
+
+    bool isWalkingSoundPlaying = false;
+
     void Awake()
     {
         if (Instance == null)
@@ -44,8 +49,19 @@ public class SoundManager : MonoBehaviour {
 
     }
 
-    public void SetIsWalking(bool state)
+    public void SetIsWalking(bool isWalking)
     {
-
+        if (isWalking && !isWalkingSoundPlaying)
+        {
+            Debug.Log("Play WALK SFX");
+            isWalkingSoundPlaying = true;
+            walkingSfx.Play();
+        }
+        else if (!isWalking && isWalkingSoundPlaying)
+        {
+            Debug.Log("Stop WALK SFX");
+            isWalkingSoundPlaying = false;
+            walkingSfx.Stop();
+        }
     }
 }
