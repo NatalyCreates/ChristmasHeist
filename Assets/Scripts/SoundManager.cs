@@ -10,7 +10,7 @@ public class SoundManager : MonoBehaviour {
     public AudioSource walkingSfx;
     public AudioSource otherSfx;
 
-    public AudioClip lose, win, pickup;
+    public AudioClip lose, win, pickup, part1, part2loop;
 
     bool isWalkingSoundPlaying = false;
 
@@ -29,22 +29,36 @@ public class SoundManager : MonoBehaviour {
 
     void Start()
     {
-        // play music in sequence
+        StartCoroutine(PlayMusic());
+    }
+
+    IEnumerator PlayMusic()
+    {
+        music.clip = part1;
+        music.Play();
+        music.loop = false;
+        yield return new WaitForSeconds(part1.length);
+        music.clip = part2loop;
+        music.Play();
+        music.loop = true;
     }
 
     public void OnBusted()
     {
         otherSfx.PlayOneShot(lose);
+        music.Stop();
     }
 
     public void OnWin()
     {
         otherSfx.PlayOneShot(win);
+        music.Stop();
     }
 
     public void OnTimesUp()
     {
         otherSfx.PlayOneShot(lose);
+        music.Stop();
     }
 
     public void OnPickup()

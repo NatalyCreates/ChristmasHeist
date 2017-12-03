@@ -3257,8 +3257,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 334a5a7bd84d41f48973fb645584318f, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: ebfb068ae2ed1ce468acfc92aa171407, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -3358,6 +3358,8 @@ MonoBehaviour:
   lose: {fileID: 8300000, guid: c424c2343220a7a42b73529d37aa109f, type: 3}
   win: {fileID: 8300000, guid: b5b5b64e02e2399468f10c778ed667f0, type: 3}
   pickup: {fileID: 8300000, guid: c646123fc378c7846ab2764af0e221b6, type: 3}
+  part1: {fileID: 8300000, guid: ebfb068ae2ed1ce468acfc92aa171407, type: 3}
+  part2loop: {fileID: 8300000, guid: 24f61247f97ed164daf0534f6d17552d, type: 3}
 --- !u!82 &2073667748
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3367,7 +3369,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ef221f47c04b8164680b79c83dda5806, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 182266ce5ea7fc44fb78afed05e7c2a8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
