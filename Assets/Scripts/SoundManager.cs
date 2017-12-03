@@ -70,13 +70,11 @@ public class SoundManager : MonoBehaviour {
     {
         if (isWalking && !isWalkingSoundPlaying)
         {
-            Debug.Log("Play WALK SFX");
             isWalkingSoundPlaying = true;
             walkingSfx.Play();
         }
         else if (!isWalking && isWalkingSoundPlaying)
         {
-            Debug.Log("Stop WALK SFX");
             isWalkingSoundPlaying = false;
             walkingSfx.Stop();
         }

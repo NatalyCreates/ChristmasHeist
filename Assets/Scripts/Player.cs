@@ -64,7 +64,7 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if (transform.position.z >= 42 && GameManager.Instance.isGameRunning)
+        if (transform.position.z >= 43 && GameManager.Instance.isGameRunning)
         {
             GameManager.Instance.ExitMall();
         }
