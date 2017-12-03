@@ -110,9 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a600fc5010c98c4fa003c0d72c66553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 10
-  jingToRad: 0.45
-  startingNoiseSize: {x: 0, y: 0, z: 0}
 --- !u!114 &114975617664382380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,3 +125,4 @@ MonoBehaviour:
   score: {fileID: 0}
   gameOverText: {fileID: 0}
   gameOverBanner: {fileID: 0}
+  collectiblesParent: {fileID: 0}

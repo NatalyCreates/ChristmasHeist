@@ -13,11 +13,16 @@ public class GameManager : MonoBehaviour {
 
     public Text gameOverText;
     public GameObject gameOverBanner;
+    public GameObject gameIntroBanner;
 
     float secondsLeft;
 
+    public GameObject collectiblesParent;
+
     internal bool isGameRunning = false;
     bool isGameOver = false;
+
+    int maxCollectibles;
 
     void Awake()
     {
@@ -33,12 +38,15 @@ public class GameManager : MonoBehaviour {
     }
 
 	void Start() {
+        maxCollectibles = collectiblesParent.GetComponentsInChildren<Collectible>().Length;
+        score.text = "0/" + maxCollectibles.ToString();
         secondsLeft = GameDesign.Instance.totalTime;
-        StartCoroutine(StartGameDelayed(2f));
+        StartCoroutine(StartGameDelayed(3f));
 	}
     IEnumerator StartGameDelayed(float time)
     {
         yield return new WaitForSeconds(time);
+        gameIntroBanner.SetActive(false);
         isGameRunning = true;
     }
 	
@@ -56,16 +64,8 @@ public class GameManager : MonoBehaviour {
         }
         if (secondsLeft <= 0)
         {
-            if (Player.Instance.transform.position.z >= 40)
-            {
-                SoundManager.Instance.OnWin();
-                StopGame("You did it!");
-            }
-            else
-            {
-                SoundManager.Instance.OnTimesUp();
-                StopGame("Out of Time!");
-            }
+            SoundManager.Instance.OnTimesUp();
+            StopGame("Out of Time!");
         }
 
         if (isGameOver)
@@ -76,6 +76,27 @@ public class GameManager : MonoBehaviour {
             }
         }
 	}
+
+    public void ExitMall()
+    {
+        SoundManager.Instance.OnWin();
+        if (Player.Instance.numCollectibles == maxCollectibles)
+        {
+            StopGame("Amazing!");
+        }
+        else if (Player.Instance.numCollectibles == 0)
+        {
+            StopGame("Try Again!");
+        }
+        else if (Player.Instance.numCollectibles <= maxCollectibles / 2)
+        {
+            StopGame("Not Bad!");
+        }
+        else if (Player.Instance.numCollectibles > maxCollectibles / 2)
+        {
+            StopGame("Good Job!");
+        }
+    }
 
     public void Busted()
     {
@@ -93,6 +114,6 @@ public class GameManager : MonoBehaviour {
 
     public void UpdateScore(int newScore)
     {
-        score.text = newScore.ToString();
+        score.text = newScore.ToString() + "/" + maxCollectibles.ToString();
     }
 }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public NoiseRadius noise;
+    internal NoiseRadius noise;
     public static Player Instance;
 
     internal Vector3 direction = Vector3.zero;
     internal Vector3 direction_normalized;
 
     internal float movementSpeed;
-    public int numCollectibles = 0;
+    internal int numCollectibles = 0;
 
     void Awake()
     {
@@ -62,6 +62,11 @@ public class Player : MonoBehaviour {
                 //Debug.Log("Radius shown");
                 //NoiseRadius.Instance.ShowNoiseRadius();
             }
+        }
+
+        if (transform.position.z >= 42)
+        {
+            GameManager.Instance.ExitMall();
         }
     }
 }
