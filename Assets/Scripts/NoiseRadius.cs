@@ -39,11 +39,11 @@ public class NoiseRadius : MonoBehaviour
 
     void Start()
     {
-        treeMesh = GetComponentInParent<Player>().GetComponentInChildren<Rigidbody>().gameObject;
+        //treeMesh = GetComponentInParent<Player>().GetComponentInChildren<Rigidbody>().gameObject;
     }
 
     void Update()
     {
-        transform.position = new Vector3(treeMesh.transform.position.x, -0.5f, treeMesh.transform.position.z);
+        //transform.position = new Vector3(treeMesh.transform.position.x, -0.5f, treeMesh.transform.position.z);
     }
 }
