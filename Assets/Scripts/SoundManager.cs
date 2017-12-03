@@ -27,8 +27,7 @@ public class SoundManager : MonoBehaviour {
         }
     }
 
-    void Start()
-    {
+    public void StartMusic() {
         StartCoroutine(PlayMusic());
     }
 

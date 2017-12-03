@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour {
 
     int maxCollectibles;
 
+    public Color timerNormalColor, timerEndColor;
+
+
     void Awake()
     {
         if (Instance == null)
@@ -41,15 +44,34 @@ public class GameManager : MonoBehaviour {
         maxCollectibles = collectiblesParent.GetComponentsInChildren<Collectible>().Length;
         score.text = "0/" + maxCollectibles.ToString();
         secondsLeft = GameDesign.Instance.totalTime;
-        StartCoroutine(StartGameDelayed(3f));
+        //StartCoroutine(StartGameDelayed(3f));
 	}
+    /*
     IEnumerator StartGameDelayed(float time)
     {
         yield return new WaitForSeconds(time);
         gameIntroBanner.SetActive(false);
         isGameRunning = true;
     }
-	
+    */
+
+    void StartGame() {
+        SoundManager.Instance.StartMusic();
+        gameIntroBanner.SetActive(false);
+        isGameRunning = true;
+    }
+
+    bool timerFlashing = false;
+
+    IEnumerator FlashTimer() {
+        while (isGameRunning) {
+            timer.color = timerEndColor;
+            yield return new WaitForSeconds(0.5f);
+            timer.color = timerNormalColor;
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
 	void Update() {
 
         if (Input.GetKeyUp(KeyCode.Escape))
@@ -58,19 +80,28 @@ public class GameManager : MonoBehaviour {
         }
 
         timer.text = (Mathf.RoundToInt(secondsLeft) / 60).ToString("00") + ":" + (Mathf.RoundToInt(secondsLeft) % 60).ToString("00");
+        
         if (isGameRunning)
         {
             secondsLeft -= Time.deltaTime;
+            if (secondsLeft <= 0) {
+                SoundManager.Instance.OnTimesUp();
+                StopGame("Out of Time!");
+            }
+            if (secondsLeft <= 10 && !timerFlashing) {
+                timerFlashing = true;
+                StartCoroutine(FlashTimer());
+            }
         }
-        if (secondsLeft <= 0)
-        {
-            SoundManager.Instance.OnTimesUp();
-            StopGame("Out of Time!");
+        else {
+            if (Input.GetKeyUp(KeyCode.Return)) {
+                StartGame();
+            }
         }
 
         if (isGameOver)
         {
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (Input.GetKeyUp(KeyCode.Return))
             {
                 SceneManager.LoadScene("Game");
             }
@@ -82,7 +113,7 @@ public class GameManager : MonoBehaviour {
         SoundManager.Instance.OnWin();
         if (Player.Instance.numCollectibles == maxCollectibles)
         {
-            StopGame("Amazing!");
+            StopGame("AMAZING!");
         }
         else if (Player.Instance.numCollectibles == 0)
         {
@@ -106,6 +137,8 @@ public class GameManager : MonoBehaviour {
 
     void StopGame(string textToShow)
     {
+        StopAllCoroutines();
+        timer.color = timerNormalColor;
         SoundManager.Instance.SetIsWalking(false);
         gameOverText.text = textToShow;
         gameOverBanner.SetActive(true);
