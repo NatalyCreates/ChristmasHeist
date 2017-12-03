@@ -26,18 +26,22 @@ public class Collectible : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.name == "Tree")
+        if (other.gameObject.name == "TreeMesh")
         {
             //Debug.Log("Trigger Enter Collectible - was Tree");
             Player.Instance.numCollectibles++;
             GameManager.Instance.UpdateScore(Player.Instance.numCollectibles);
-            Debug.Log(Player.Instance.numCollectibles.ToString());
             //noiseRadScale = Mathf.Sqrt(Player.Instance.numCollectibles * GameDesign.Instance.jingToRad);
             noiseRadScale = Player.Instance.numCollectibles * GameDesign.Instance.jingToRad + GameDesign.Instance.initialTreeSize;
             //noiseRadScale = Player.Instance.numCollectibles * 0.8f;
             Debug.Log(noiseRadScale.ToString());
             //NoiseRadius.Instance.noiseCollider.radius = ;
             NoiseRadius.Instance.transform.localScale = new Vector3(0.5f, noiseRadScale, noiseRadScale);
+
+            //Player.Instance.GetComponentInChildren<Rigidbody>().gameObject.transform.localScale *= 1.1f;
+            Transform t = Player.Instance.GetComponentInChildren<Rigidbody>().gameObject.transform;
+            t.localScale = new Vector3(t.localScale.x + 0.02f, t.localScale.y + 0.02f, t.localScale.z + 0.02f);
+            t.position = new Vector3(t.position.x, t.position.y + 0.01f, t.position.z);
 
             SoundManager.Instance.OnPickup();
             Destroy(gameObject);

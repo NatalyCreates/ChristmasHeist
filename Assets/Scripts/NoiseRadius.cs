@@ -7,6 +7,8 @@ public class NoiseRadius : MonoBehaviour
     public static NoiseRadius Instance;
     public SphereCollider noiseCollider;
 
+    GameObject treeMesh;
+
     /*
     public void ShowNoiseRadius()
     {
@@ -33,5 +35,15 @@ public class NoiseRadius : MonoBehaviour
     {
         Instance = this;
         noiseCollider = Instance.GetComponent<SphereCollider>();
+    }
+
+    void Start()
+    {
+        treeMesh = GetComponentInParent<Player>().GetComponentInChildren<Rigidbody>().gameObject;
+    }
+
+    void Update()
+    {
+        transform.position = new Vector3(treeMesh.transform.position.x, -0.5f, treeMesh.transform.position.z);
     }
 }
