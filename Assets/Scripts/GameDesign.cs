@@ -17,7 +17,7 @@ public class GameDesign : MonoBehaviour {
     internal float jingToRad = 0.4f;
     internal float initialTreeSize = 0.55f;
     internal Vector3 startingNoiseSize;
-    internal float totalTime = 15f;
+    internal float totalTime = 60f;
 
     void Awake()
     {
