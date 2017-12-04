@@ -36,13 +36,13 @@ public class Collectible : MonoBehaviour {
             Debug.Log(noiseRadScale.ToString());
             //NoiseRadius.Instance.noiseCollider.radius = ;
             NoiseRadius.Instance.transform.localScale = new Vector3(0.5f, noiseRadScale, noiseRadScale);
-            
+            /*
             Transform t = Player.Instance.GetComponentInChildren<MeshRenderer>().transform;
             Vector3 newScale = new Vector3(t.localScale.x + 0.04f, t.localScale.y + 0.04f, t.localScale.z + 0.04f);
             Vector3 newPos = new Vector3(t.localPosition.x, t.localPosition.y + 0.02f, t.localPosition.z);
             t.localScale = newScale;
             t.localPosition = newPos;
-
+            */
             SoundManager.Instance.OnPickup();
             Destroy(gameObject);
         }
