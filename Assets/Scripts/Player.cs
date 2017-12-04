@@ -39,7 +39,7 @@ public class Player : MonoBehaviour {
             direction_normalized = direction.normalized;
             //Debug.Log("CH direction vector " + direction.ToString());
 
-            transform.Translate(direction_normalized.x * GameDesign.Instance.playerSpeed * Time.deltaTime, direction.y, direction_normalized.z * GameDesign.Instance.playerSpeed * Time.deltaTime);
+            transform.Translate(direction_normalized.x * GameDesign.Instance.playerSpeed * Time.deltaTime, 0f, direction_normalized.z * GameDesign.Instance.playerSpeed * Time.deltaTime);
 
             // animate
 
