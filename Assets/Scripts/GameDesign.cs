@@ -12,7 +12,7 @@ public class GameDesign : MonoBehaviour {
 
     public static GameDesign Instance;
 
-    internal float playerSpeed = 20;
+    internal float playerSpeed = 15;
     internal float guardSpeed = 10;
     internal float jingToRad = 0.4f;
     internal float initialTreeSize = 0.55f;
