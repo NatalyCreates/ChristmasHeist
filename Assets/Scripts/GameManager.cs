@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour {
         SoundManager.Instance.OnWin();
         if (Player.Instance.numCollectibles == maxCollectibles)
         {
-            StopGame("AMAZING!");
+            StopGame("Amazing!");
         }
         else if (Player.Instance.numCollectibles == 0)
         {
