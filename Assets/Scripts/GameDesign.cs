@@ -12,12 +12,12 @@ public class GameDesign : MonoBehaviour {
 
     public static GameDesign Instance;
 
-    internal float playerSpeed = 15;
-    internal float guardSpeed = 10;
+    internal float playerSpeed = 12;
+    internal float guardSpeed = 12;
     internal float jingToRad = 0.4f;
     internal float initialTreeSize = 0.55f;
     internal Vector3 startingNoiseSize;
-    internal float totalTime = 60f;
+    internal float totalTime = 90f;
 
     void Awake()
     {
