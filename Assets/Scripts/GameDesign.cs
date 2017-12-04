@@ -25,4 +25,4 @@ public class GameDesign : MonoBehaviour {
         startingNoiseSize = new Vector3(0.5f, initialTreeSize, initialTreeSize);
     }
 
-    }
+}
