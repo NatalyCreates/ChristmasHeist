@@ -36,65 +36,16 @@ public class Collectible : MonoBehaviour {
             Debug.Log(noiseRadScale.ToString());
             //NoiseRadius.Instance.noiseCollider.radius = ;
             NoiseRadius.Instance.transform.localScale = new Vector3(0.5f, noiseRadScale, noiseRadScale);
-
-            //Player.Instance.GetComponentInChildren<Rigidbody>().gameObject.transform.localScale *= 1.1f;
-            StopAllCoroutines();
-            StartCoroutine(LerpGrowShrinkTree());
-
-            //Transform t = Player.Instance.GetComponentInChildren<MeshRenderer>().gameObject.transform;
-            //Vector3 newScale = new Vector3(t.localScale.x + 0.08f, t.localScale.y + 0.08f, t.localScale.z + 0.08f);
-            //t.localScale = newScale;
+            
+            Transform t = Player.Instance.GetComponentInChildren<MeshRenderer>().transform;
+            Vector3 newScale = new Vector3(t.localScale.x + 0.04f, t.localScale.y + 0.04f, t.localScale.z + 0.04f);
+            Vector3 newPos = new Vector3(t.localPosition.x, t.localPosition.y + 0.02f, t.localPosition.z);
+            t.localScale = newScale;
+            t.localPosition = newPos;
 
             SoundManager.Instance.OnPickup();
             Destroy(gameObject);
         }
-        else
-        {
-            //Debug.Log("Trigger Enter Collectible - wasn't Tree");
-            //Collectible dissapears
-            //Add 1 to number of coll
-        }
 
-    }
-
-    IEnumerator LerpGrowShrinkTree() {
-        Transform t = Player.Instance.GetComponentInChildren<MeshRenderer>().gameObject.transform;
-        Vector3 newScale = new Vector3(t.localScale.x + 0.08f, t.localScale.y + 0.08f, t.localScale.z);
-        Vector3 newScalePlus = new Vector3(t.localScale.x + 1.5f, t.localScale.y + 1.5f, t.localScale.z);
-        Vector3 newPos = new Vector3(t.position.x, t.position.y + 0.04f, t.position.z);
-        Vector3 newPosPlus = new Vector3(t.position.x, t.position.y + 0.75f, t.position.z);
-
-        float totalTime = 0.25f;
-        float elapsedTime = 0f;
-        Vector3 initScale = t.localScale;
-        //localPosition
-        //Vector3 initPos = t.position;
-
-        while (elapsedTime < totalTime) {
-            t.localScale = Vector3.Lerp(initScale, newScale, (elapsedTime / totalTime));
-            elapsedTime += Time.deltaTime;
-            //t.position = Vector3.Lerp(initPos, newPosPlus, elapsedTime / totalTime);
-            yield return null;
-        }
-        if (elapsedTime >= totalTime) {
-            //t.localScale = newScalePlus;
-            //t.position = newPosPlus;
-        }
-        //t.localScale = newScale;
-
-        //yield return new WaitForSeconds(3f);
-
-        /*
-        elapsedTime = 0f;
-        while (elapsedTime < totalTime) {
-            elapsedTime += Time.deltaTime;
-            t.localScale = Vector3.Lerp(t.localScale, newScale, elapsedTime / totalTime);
-            //localPosition
-            t.position = Vector3.Lerp(t.position, newPos, elapsedTime / totalTime);
-            yield return null;
-        }
-        t.localScale = newScale;
-        t.position = newPos;
-        */
     }
 }
